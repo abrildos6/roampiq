@@ -66,6 +66,27 @@ export function IntroSection() {
     })
   }, [router])
 
+  // Next.js router cache로 복원될 때 hover/tap 상태 초기화
+  useEffect(() => {
+    const reset = () => {
+      setTappedIndex(null)
+      setHoveredIndex(null)
+    }
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") reset()
+    }
+    // BFCache 복원 (iOS Safari 등)
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) reset()
+    }
+    document.addEventListener("visibilitychange", onVisibility)
+    window.addEventListener("pageshow", onPageShow)
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility)
+      window.removeEventListener("pageshow", onPageShow)
+    }
+  }, [])
+
   // Intro choreography (mobile only): each letter briefly reveals its photo,
   // then the moment M appears all four photos snap away leaving the letters.
   useEffect(() => {
@@ -148,10 +169,10 @@ export function IntroSection() {
                 event.preventDefault()
                 handleNavigate(index, panel.category)
               }}
-              onMouseEnter={() => tappedIndex === null && setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onFocus={() => tappedIndex === null && setHoveredIndex(index)}
-              onBlur={() => setHoveredIndex(null)}
+              onMouseEnter={() => isDesktopMouse && tappedIndex === null && setHoveredIndex(index)}
+              onMouseLeave={() => isDesktopMouse && setHoveredIndex(null)}
+              onFocus={() => isDesktopMouse && tappedIndex === null && setHoveredIndex(index)}
+              onBlur={() => isDesktopMouse && setHoveredIndex(null)}
               whileTap={{ opacity: 0.5 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: isTapped ? 0.5 : isLoaded ? 1 : 0 }}

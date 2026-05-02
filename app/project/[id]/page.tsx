@@ -169,7 +169,7 @@ export default function ProjectPage() {
           className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors tracking-wider uppercase"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span className="hidden sm:inline">Back to {project.category || "Work"}</span>
+          <span className="hidden sm:inline">Back to {project.category ? project.category.charAt(0).toUpperCase() + project.category.slice(1) : "Work"}</span>
         </Link>
         <Link href="/" className="text-lg sm:text-xl font-light tracking-widest uppercase text-foreground">ROAM</Link>
         <div className="w-20" />

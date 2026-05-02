@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { PortfolioGrid } from "@/components/portfolio-grid"
 import { AboutSection } from "@/components/about-section"
@@ -34,13 +34,13 @@ function ScrollToTopButton() {
 }
 
 function WorkPageInner() {
+  const router = useRouter()
   const searchParams = useSearchParams()
-  const [activeCategory, setActiveCategory] = useState("rostro")
+
+  const activeCategory = searchParams.get("category") || "rostro"
 
   useEffect(() => {
-    const cat = searchParams.get("category")
-    if (cat) {
-      setActiveCategory(cat)
+    if (searchParams.get("category")) {
       requestAnimationFrame(() => {
         document.getElementById("work")?.scrollIntoView({ behavior: "auto" })
       })
@@ -48,11 +48,10 @@ function WorkPageInner() {
   }, [searchParams])
 
   const handleCategoryClick = (category: string) => {
-    setActiveCategory(category)
-    const workSection = document.getElementById("work")
-    if (workSection) {
-      workSection.scrollIntoView({ behavior: "smooth" })
-    }
+    router.push(`/work?category=${category}`, { scroll: false })
+    requestAnimationFrame(() => {
+      document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
+    })
   }
 
   return (

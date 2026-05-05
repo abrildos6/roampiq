@@ -12,7 +12,7 @@ type IntroPanel = {
 }
 
 const panels: IntroPanel[] = [
-  { letter: "R", label: "Rostro", category: "rostro", image: "/images/rostro-syh-main.jpg" },
+  { letter: "R", label: "Rostro", category: "rostro", image: "/images/rostro-cyj2-main.jpg" },
   { letter: "O", label: "Ordinary", category: "ordinary", image: "/images/ordinary-lsy-main.jpg" },
   { letter: "A", label: "Athletic", category: "athletic", image: "/images/athletic-sss-main.jpg" },
   { letter: "M", label: "coMing soon", category: "motion", image: "" },

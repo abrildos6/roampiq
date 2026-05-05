@@ -43,6 +43,25 @@ export interface PortfolioItem {
       ],
     },
     {
+      id: "37",
+      title: "DDP",
+      category: "rostro",
+      type: "image",
+      thumbnail: "/images/rostro-cyj2-main.jpg",
+      year: "2026",
+      description: "",
+      aspectRatio: "portrait",
+      images: [
+        "/images/rostro-cyj2-main.jpg",
+        "/images/rostro-cyj2-sub1.jpg",
+        "/images/rostro-cyj2-sub2.jpg",
+        "/images/rostro-cyj2-sub3.jpg",
+        "/images/rostro-cyj2-sub4.jpg",
+        "/images/rostro-cyj2-sub5.jpg",
+        "/images/rostro-cyj2-sub6.jpg",
+      ],
+    },
+    {
       id: "15",
       title: "Spartan I",
       category: "rostro",
@@ -235,7 +254,6 @@ export interface PortfolioItem {
       aspectRatio: "portrait",
       images: [
         "/images/rostro-ljy-main.jpg",
-        "/images/rostro-ljy-sub1.jpg",
         "/images/rostro-ljy-sub2.jpg",
       ],
     },

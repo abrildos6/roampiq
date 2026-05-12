@@ -29,7 +29,7 @@ export interface PortfolioItem {
     },
     {
       id: "11",
-      title: "Autumn",
+      title: "Gray",
       category: "ordinary",
       type: "image",
       thumbnail: "/images/ordinary-syh2-main.jpg",
